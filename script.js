@@ -258,7 +258,7 @@ const storyLines = [
     { id: "second-woman-pull-butterfly", type: "narration", text: "灵泊捏住蝴蝶的翅膀，试图将它从脸上扯开。",  bg: "images/cg4.png" },
     { id: "second-woman-butterfly-stuck", type: "narration", text: "然而，无论他怎么用力，那只蝴蝶都纹丝不动，仿佛早已与他的皮肉长在了一起。",  bg: "images/cg4.png" },
     { id: "second-woman-butterfly-fail", type: "narration", text: "完全扯不动。", bg: "images/black.png" },
-    { id: "second-woman-annoyed", type: "dialogue", speaker: "灵泊", text: "啧。",bg: "images/bg1.png",leftPortrait: "images/lingbo8.PNG", rightPortrait: "images/tree1.PNG" },
+    { id: "second-woman-annoyed", type: "dialogue", speaker: "灵泊", text: "啧。",bg: "images/bg1.PNG",leftPortrait: "images/lingbo8.PNG", rightPortrait: "images/tree1.PNG" },
     { id: "second-woman-silence-4", type: "narration", text: "灵泊沉默片刻，终于缓缓放下了手。", leftPortrait: "images/lingbo8.PNG", rightPortrait: "images/tree1.PNG" },
     { id: "second-woman-ask-answer", type: "dialogue", speaker: "灵泊", text: "好吧，我早就死了，可是为什么我会活过来？您知道些什么吗？", leftPortrait: "images/lingbo8.PNG", rightPortrait: "images/tree1.PNG" },
     { id: "second-woman-doesnt-know-2", type: "dialogue", speaker: "女人", text: "……", rightPortrait: "images/tree1.PNG", leftPortrait: "images/lingbo8.PNG" },
@@ -619,7 +619,7 @@ const explorationScenes = {
         ]
     },
     scene12: {
-        background: "images/cbg13.png", 
+        background: "images/cbg13.PNG", 
         hidePlayer: true,
         hotspots: []
     }
