@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>灵泊 - 第一幕：醒来</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main id="game">
+        <!-- 开始界面 -->
+        <section id="title-screen" class="screen">
+            <img class="full-image" src="images/start.PNG" alt="游戏开始画面">
+            <div class="title-buttons">
+                <button id="start-button">开始游戏</button>
+                <button id="lang-toggle-button" class="glass-button">Language / 语言</button>
+            </div>
+        </section>
+
+        <!-- 第一幕及后续剧情 -->
+        <section id="story-screen" class="screen hidden">
+            <img id="story-cg" class="full-image" src="images/scene1.png" alt="剧情场景">
+            <!-- 电影黑边 -->
+            <div class="cinema-bar cinema-bar-top"></div>
+            <div class="cinema-bar cinema-bar-bottom"></div>
+            <!-- 点击画面推进剧情 -->
+            <button id="story-click-area" aria-label="点击继续剧情"></button>
+            <!-- 旁白 -->
+            <div id="narration" class="hidden">
+                <p id="narration-text"></p>
+                <span id="continue-hint">点击继续 ▸</span>
+            </div>
+            <!-- 剧情界面左右立绘 -->
+            <img id="portrait-left" class="hidden portrait-left" src="" alt="左侧立绘">
+            <img id="portrait-right" class="hidden portrait-right" src="" alt="右侧立绘">
+            <!-- 剧情选项 -->
+            <div id="choice-panel" class="hidden">
+                <button id="name-choice" class="choice-button">灵泊。</button>
+                <button id="investigate-choice" class="choice-button hidden">调查周围</button>
+            </div>
+            <!-- 对话框 -->
+            <div id="dialogue-box" class="hidden">
+                <div id="name-box">灵泊</div>
+                <div id="dialogue-text"></div>
+                <span id="dialogue-hint">点击继续 ▸</span>
+            </div>
+        </section>
+
+        <!-- 横向探索地图 -->
+        <section id="map-screen" class="screen hidden">
+            <div id="game-world">
+                <div id="world">
+                    <img id="background" src="images/background1.png" alt="">
+                    <img id="road" src="images/road1.png" alt="">
+                    <img id="player" src="images/character.png" alt="灵泊">
+                    <img id="foreground" src="images/frontground1.png" alt="">
+                </div>
+            </div>
+            <div id="map-dialogue" class="hidden">
+                <div id="map-name-box">灵泊</div>
+                <p id="map-dialogue-text">我得先看看周围……</p>
+                <img src="images/lingbo1.png" alt="灵泊立绘">
+            </div>
+            <button id="map-save-button" class="glass-button map-save">存档</button>
+        </section>
+
+        <!-- 点击热点调查场景 -->
+        <section id="exploration-screen" class="screen hidden">
+            <div id="exploration-stage">
+                <!-- 背景由 JS 动态替换 -->
+                <img id="exploration-background" src="" alt="场景背景">
+                <!-- JS 动态生成调查热点 -->
+                <div id="exploration-hotspots-container"></div>
+                <!-- 场景内移动的灵泊 -->
+                <div id="exploration-player-wrap">
+                    <img id="exploration-player" src="images/character.PNG" alt="灵泊">
+                </div>
+                <!-- 探索界面左、中、右立绘 -->
+                <img id="ex-portrait-left" class="hidden" src="images/lingbo1.png" alt="左侧立绘">
+                <img id="ex-portrait-center" class="hidden" src="images/lingbo1.png" alt="中间立绘">
+                <img id="ex-portrait-right" class="hidden" src="images/lingbo1.png" alt="右侧立绘">
+                <!-- 调查文字框 -->
+                <div id="exploration-dialogue" class="hidden">
+                    <div id="exploration-name-box" class="hidden"></div>
+                    <p id="exploration-dialogue-text"></p>
+                    <span id="exploration-hint" class="hidden">点击任意处继续 ▸</span>
+                </div>
+                <!-- 调查选项面板 -->
+                <div id="exploration-choice-panel" class="hidden"></div>
+            </div>
+        </section>
+
+        <!-- 全局提示 -->
+        <div id="toast" class="hidden"></div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

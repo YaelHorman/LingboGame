@@ -1,0 +1,967 @@
+/* =========================
+
+   全局设置
+
+   ========================= */
+
+* {
+
+    box-sizing: border-box;
+
+}
+
+html,
+
+body {
+
+    width: 100%;
+
+    height: 100%;
+
+    margin: 0;
+
+}
+
+body {
+
+    overflow: hidden;
+
+    background: #000;
+
+    color: #fff;
+
+    font-family: Georgia, "Noto Serif SC", serif;
+
+}
+
+button {
+
+    font: inherit;
+
+    color: #fff;
+
+    cursor: pointer;
+
+}
+
+button:focus-visible {
+
+    outline: 2px solid #fff;
+
+    outline-offset: 4px;
+
+}
+
+button:disabled {
+
+    opacity: 0.4;
+
+    cursor: not-allowed;
+
+}
+
+#game {
+
+    position: relative;
+
+    width: 100vw;
+
+    height: 100vh;
+
+    height: 100dvh;
+
+    overflow: hidden;
+
+    background: #000;
+
+}
+
+.screen {
+
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    background: #000;
+
+}
+
+.hidden {
+
+    display: none !important;
+
+}
+
+/* =========================
+
+   通用背景图片
+
+   ========================= */
+
+.full-image {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+/* =========================
+
+   开始界面
+
+   ========================= */
+
+.title-buttons {
+
+    position: absolute;
+
+    right: 8%;
+
+    bottom: 12%;
+
+    z-index: 10;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+    width: 190px;
+
+}
+
+.title-buttons button {
+
+    width: 100%;
+
+    min-height: 48px;
+
+    padding: 12px 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+
+    background: rgba(12, 12, 12, 0.78);
+
+    letter-spacing: 3px;
+
+    transition: background 0.2s;
+
+}
+
+.title-buttons button:hover {
+
+    background: rgba(100, 100, 100, 0.55);
+
+}
+
+.glass-button {
+
+    padding: 9px 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+
+    background: rgba(30, 30, 30, 0.55);
+
+    backdrop-filter: blur(8px);
+
+    -webkit-backdrop-filter: blur(8px);
+
+}
+
+.glass-button:hover:not(:disabled) {
+
+    background: rgba(150, 150, 150, 0.35);
+
+}
+
+/* =========================
+
+   剧情画面
+
+   ========================= */
+
+#story-screen {
+
+    isolation: isolate;
+
+}
+
+#story-cg {
+
+    z-index: 0;
+
+}
+
+#story-click-area {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    width: 100%;
+
+    height: 100%;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+}
+
+.cinema-bar {
+
+    position: absolute;
+
+    left: 0;
+
+    z-index: 2;
+
+    width: 100%;
+
+    height: 10vh;
+
+    background: #000;
+
+    pointer-events: none;
+
+}
+
+.cinema-bar-top { top: 0; }
+
+.cinema-bar-bottom { bottom: 0; }
+
+/* =========================
+
+   旁白
+
+   ========================= */
+
+#narration {
+
+    position: absolute;
+
+    left: 10%;
+
+    right: 10%;
+
+    bottom: 13%;
+
+    z-index: 5;
+
+    padding: 16px 24px;
+
+    text-align: center;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    pointer-events: none;
+
+}
+
+#narration-text {
+
+    margin: 0;
+
+    font-size: clamp(18px, 1.8vw, 25px);
+
+    line-height: 1.9;
+
+    white-space: pre-line;
+
+    overflow-wrap: anywhere;
+
+}
+
+#continue-hint {
+
+    display: inline-block;
+
+    margin-top: 12px;
+
+    font-size: 12px;
+
+    opacity: 0.7;
+
+    animation: hint-pulse 1.5s infinite;
+
+}
+
+/* =========================
+
+   剧情对话框
+
+   ========================= */
+
+#dialogue-box {
+
+    position: absolute;
+
+    right: 4%;
+
+    bottom: 9%;
+
+    z-index: 5;
+
+    width: min(58%, 850px);
+
+    min-height: 170px;
+
+    padding: 28px 30px 36px;
+
+    background: rgba(12, 12, 12, 0.84);
+
+    border: 1px solid rgba(255, 255, 255, 0.38);
+
+    pointer-events: none;
+
+}
+
+#name-box {
+
+    position: absolute;
+
+    left: 20px;
+
+    top: -32px;
+
+    padding: 7px 22px;
+
+    background: rgba(15, 15, 15, 0.95);
+
+    border: 1px solid rgba(255, 255, 255, 0.4);
+
+    font-size: 15px;
+
+    letter-spacing: 2px;
+
+}
+
+#dialogue-text {
+
+    margin: 0;
+
+    font-size: clamp(17px, 1.6vw, 23px);
+
+    line-height: 1.9;
+
+    white-space: pre-line;
+
+    overflow-wrap: anywhere;
+
+}
+
+#dialogue-hint {
+
+    position: absolute;
+
+    right: 18px;
+
+    bottom: 10px;
+
+    font-size: 12px;
+
+    opacity: 0.65;
+
+    animation: hint-pulse 1.5s infinite;
+
+}
+
+@keyframes hint-pulse {
+
+    0%, 100% { opacity: 0.35; }
+
+    50% { opacity: 0.9; }
+
+}
+
+/* =========================
+
+   剧情选项与存档
+
+   ========================= */
+
+#choice-panel {
+
+    position: absolute;
+
+    right: 5%;
+
+    bottom: 34%;
+
+    z-index: 12;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 12px;
+
+    width: min(340px, 42vw);
+
+    max-height: 45%;
+
+    overflow-y: auto;
+
+}
+
+.choice-button {
+
+    width: 100%;
+
+    padding: 15px 20px;
+
+    background: rgba(12, 12, 12, 0.92);
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+
+    letter-spacing: 1px;
+
+    text-align: left;
+
+    line-height: 1.6;
+
+    transition: background 0.2s, border-color 0.2s;
+
+}
+
+.choice-button:hover {
+
+    background: rgba(90, 90, 90, 0.85);
+
+    border-color: rgba(255, 255, 255, 0.9);
+
+}
+
+.story-save {
+
+    position: absolute;
+
+    top: 9%;
+
+    right: 24px;
+
+    z-index: 15;
+
+}
+
+/* =========================
+
+   存档菜单
+
+   ========================= */
+
+#save-menu {
+
+    z-index: 20;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: rgba(0, 0, 0, 0.78);
+
+}
+
+.save-panel {
+
+    width: min(420px, 88vw);
+
+    padding: 30px;
+
+    text-align: center;
+
+    background: rgba(18, 18, 18, 0.97);
+
+    border: 1px solid rgba(255, 255, 255, 0.4);
+
+}
+
+.save-panel h2 {
+
+    font-weight: normal;
+
+    letter-spacing: 4px;
+
+}
+
+.save-panel p {
+
+    line-height: 1.7;
+
+    white-space: pre-line;
+
+}
+
+.save-panel button {
+
+    display: block;
+
+    width: 100%;
+
+    margin-top: 12px;
+
+}
+
+/* =========================
+
+   横向探索地图
+
+   ========================= */
+
+#map-screen { background: #000; }
+
+#game-world { position: absolute; inset: 0; overflow: hidden; }
+
+#world { position: absolute; left: 0; bottom: 0; width: 5157px; height: 100%; }
+
+#world > img { position: absolute; left: 0; bottom: 0; width: 5157px; height: auto; pointer-events: none; }
+
+#background { z-index: 0; }
+
+#road { z-index: 1; }
+
+#player { z-index: 2; width: auto; height: 65%; max-width: none; object-fit: contain; object-position: bottom center; }
+
+#foreground { z-index: 3; }
+
+#map-dialogue { position: absolute; right: 4%; bottom: 8%; z-index: 8; width: min(500px, 55vw); padding: 26px; background: rgba(12, 12, 12, 0.88); border: 1px solid rgba(255, 255, 255, 0.4); }
+
+#map-name-box { margin-bottom: 12px; letter-spacing: 2px; }
+
+#map-dialogue-text { line-height: 1.8; }
+
+#map-dialogue img { display: block; width: auto; height: 30vh; max-width: 100%; object-fit: contain; object-position: bottom left; }
+
+.map-save { position: absolute; top: 9%; right: 24px; z-index: 15; }
+
+/* =========================
+
+   全局提示
+
+   ========================= */
+
+#toast {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 4%;
+
+    z-index: 30;
+
+    transform: translateX(-50%);
+
+    padding: 12px 22px;
+
+    background: rgba(20, 20, 20, 0.95);
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+
+}
+
+/* =========================
+
+   探索界面
+
+   ========================= */
+
+#exploration-screen {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #000;
+
+}
+
+#exploration-stage {
+
+    position: relative;
+
+    width: min(100vw, 177.7778vh);
+
+    height: min(100vh, 56.25vw);
+
+    aspect-ratio: 16 / 9;
+
+    overflow: hidden;
+
+    background: #080808;
+
+}
+
+#exploration-background {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: fill;
+
+    pointer-events: none;
+
+}
+
+#exploration-hotspots-container {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+}
+
+#exploration-hotspots-container .exploration-hotspot {
+
+    pointer-events: auto;
+
+}
+
+.exploration-hotspot {
+
+    position: absolute;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+}
+
+#exploration-player-wrap {
+
+    position: absolute;
+
+    left: 15%;
+
+    bottom: 5%;
+
+    z-index: 2;
+
+    height: 45%;
+
+    width: max-content;
+
+    max-width: 25%;
+
+    pointer-events: none;
+
+}
+
+#exploration-player {
+
+    display: block;
+
+    width: auto;
+
+    height: 100%;
+
+    max-width: 100%;
+
+    object-fit: contain;
+
+    object-position: bottom center;
+
+    pointer-events: none;
+
+}
+
+#exploration-dialogue {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 5%;
+
+    transform: translateX(-50%);
+
+    z-index: 10;
+
+    width: 70%;
+
+    max-width: 900px;
+
+    min-height: 18%;
+
+    padding: 20px 24px;
+
+    color: #eee;
+
+    background: rgba(8, 8, 8, 0.92);
+
+    border: 1px solid rgba(220, 220, 220, 0.25);
+
+}
+
+#exploration-name-box {
+
+    position: absolute;
+
+    left: 0;
+
+    top: -38px;
+
+    padding: 6px 18px;
+
+    background: rgba(15, 15, 15, 0.95);
+
+    border: 1px solid rgba(255, 255, 255, 0.4);
+
+    font-size: 15px;
+
+    letter-spacing: 2px;
+
+}
+
+#exploration-dialogue-text {
+
+    margin: 0;
+
+    font-size: clamp(15px, 1.5vw, 19px);
+
+    line-height: 1.9;
+
+    white-space: pre-line;
+
+}
+
+#exploration-hint {
+
+    position: absolute;
+
+    right: 18px;
+
+    bottom: 10px;
+
+    font-size: 12px;
+
+    opacity: 0.65;
+
+    animation: hint-pulse 1.5s infinite;
+
+}
+
+#exploration-choice-panel {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 15;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    width: min(300px, 60%);
+
+}
+
+.exploration-choice-btn {
+
+    width: 100%;
+
+    padding: 15px 20px;
+
+    background: rgba(12, 12, 12, 0.92);
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+
+    text-align: center;
+
+    letter-spacing: 1px;
+
+    transition: background 0.2s, border-color 0.2s;
+
+}
+
+.exploration-choice-btn:hover {
+
+    background: rgba(90, 90, 90, 0.85);
+
+    border-color: rgba(255, 255, 255, 0.9);
+
+}
+
+/* =========================
+
+   多立绘系统 - 剧情界面
+
+   ========================= */
+
+#portrait-left, #portrait-right {
+
+    position: absolute;
+
+    bottom: 0;
+
+    z-index: 4;
+
+    height: 70vh;
+
+    width: auto;
+
+    max-width: 45vw;
+
+    object-fit: contain;
+
+    object-position: bottom center;
+
+    transform-origin: bottom center;
+
+    pointer-events: none;
+
+    transition: transform 0.3s ease, height 0.3s ease;
+
+}
+
+#portrait-left.portrait-left { left: 3%; right: auto; object-position: bottom left; }
+
+#portrait-right.portrait-right { left: auto; right: 3%; object-position: bottom right; }
+
+/* =========================
+
+   多立绘系统 - 探索界面
+
+   ========================= */
+
+#ex-portrait-left {
+
+    position: absolute; bottom: 0; left: 3%; height: 75%; max-width: 40%;
+
+    object-fit: contain; object-position: bottom left; pointer-events: none; z-index: 4;
+
+}
+
+#ex-portrait-center {
+
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); height: 75%; max-width: 40%;
+
+    object-fit: contain; object-position: bottom center; pointer-events: none; z-index: 4;
+
+}
+
+#ex-portrait-right {
+
+    position: absolute; bottom: 0; right: 3%; height: 75%; max-width: 40%;
+
+    object-fit: contain; object-position: bottom right; pointer-events: none; z-index: 4;
+
+}
+
+#ex-portrait-left.fish-large { height: 88%; }
+
+#ex-portrait-right.monster-large { height: 115%; } 
+
+#ex-portrait-right.guard-large { height: 80%; }
+
+/* =========================
+
+   小屏幕适配
+
+   ========================= */
+
+@media (max-width: 700px) {
+
+    .title-buttons { right: 6%; bottom: 10%; width: 160px; }
+
+    .cinema-bar { height: 5vh; }
+
+    #narration { left: 5%; right: 5%; bottom: 10%; padding: 12px; }
+
+    #narration-text { font-size: 17px; line-height: 1.7; }
+
+    #portrait-left, #portrait-right { height: 48vh; max-width: 48vw; }
+
+    #portrait-left.portrait-left { left: 1%; }
+
+    #portrait-right.portrait-right { right: 1%; }
+
+    #dialogue-box { right: 3%; bottom: 5%; width: 94%; min-height: 125px; padding: 20px 18px 30px; }
+
+    #dialogue-text { font-size: 16px; line-height: 1.7; }
+
+    #name-box { left: 14px; top: -29px; padding: 6px 15px; }
+
+    #choice-panel { right: 5%; bottom: 28%; width: 90%; max-height: 45%; }
+
+    .choice-button { padding: 12px 15px; }
+
+    .story-save, .map-save { top: 6%; right: 12px; }
+
+    #map-dialogue { right: 3%; bottom: 5%; width: 94%; }
+
+    #map-dialogue img { height: 24vh; }
+
+    #exploration-dialogue { width: 90%; padding: 12px; font-size: 13px; }
+
+    #exploration-player-wrap { height: 35%; max-width: 30%; }
+
+}
+
+/* =========================
+
+   树中女人专属放大特效
+
+   ========================= */
+
+/* 针对剧情界面右侧的女人立绘 */
+
+#portrait-right[src*="tree"] {
+
+    height: 85% !important; /* 默认是 70vh，这里调大到 85% */
+
+    transform: scale(1.3);   /* 再稍微整体放大 1.1 倍，如果觉得太大可以删掉这行 */
+
+    transform-origin: bottom right; /* 确保放大时依然贴着右下角 */
+
+}
+
+#ex-portrait-right[src*="images/x"] {
+
+    height: 90% !important; 
+
+}
