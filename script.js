@@ -610,7 +610,7 @@ const explorationScenes = {
         ]
     },
     scene11: {
-        background: "images/cbg12.PNG",
+        background: "images/cbg12.png",
         hidePlayer: true,
         hotspots: [
             { target: "left_arrow", style: "left: 23%; top: 55%; width: 15%; height: 18%;", scenario: "left_arrow_11" },
@@ -619,7 +619,7 @@ const explorationScenes = {
         ]
     },
     scene12: {
-        background: "images/cbg13.PNG", 
+        background: "images/cbg13.png", 
         hidePlayer: true,
         hotspots: []
     }
