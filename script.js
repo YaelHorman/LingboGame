@@ -1,4 +1,20 @@
 
+/*
+Lingbo is a horror visual novel, and its main interaction is simple: 
+players click to continue the story or investigate objects.
+At first, I worried that the interaction might be too simple for
+this assessment. However, I realised that the focus of a visual
+novel is not always complex controls, but how text, images and
+player actions work together.
+
+The project also involved much more work than I expected. Even simple 
+interactions require different elements to work together correctly, 
+including story events, images, dialogue and scene transitions. 
+I wanted the controls to stay simple so players could focus on the 
+story rather than learning complicated mechanics.
+*/
+
+
 const $ = (id) => document.getElementById(id);
 const titleScreen = $("title-screen");
 const storyScreen = $("story-screen");
@@ -172,6 +188,19 @@ function updateStoryBgm(event) {
 }
 
 
+/*
+As the story grew, I found that managing a large amount of text and 
+different story events became difficult. Using only numbers or short, 
+abstract letter combinations for IDs made it easy to lose track of 
+what each event represented, increasing the chance of mistakes when 
+editing the story.
+
+To make the code easier to understand, I named IDs according to the 
+scene or content they describe. This allows me to recognise the 
+purpose of an event more quickly without having to search through the 
+entire story. It also makes the project easier to edit and maintain 
+as more scenes and interactions are added.
+*/
 
 
 const storyLines = [
@@ -354,12 +383,43 @@ function updateStoryBackground(event) {
     storyCGElement.src = backgroundPath;
 }
 
+/*
+I initially worried that the illustrations and backgrounds might 
+take attention away from the writing. I wanted the story to remain 
+important, especially because the atmosphere depends on what the 
+player reads and discovers.
+
+After testing the prototype repeatedly, I began to see the artwork 
+differently. Since this is a visual novel, images are not just 
+decoration. They help establish the mood, show the characters and 
+give players something to look at between clicks. Without enough 
+visual changes, repeatedly clicking through text could become boring.
+
+I therefore chose to let the text and artwork support each other. 
+The dialogue explains what Lingbo experiences, while the images help 
+make those experiences feel more immediate.
+
+Although I created both Chinese and English versions of the game,
+I was not fully satisfied with the opening dialogue and artwork. 
+Since the game script was adapted from my own Chinese novel, 
+I mainly used the Chinese version as the basis for development.
+
+During the writing process, I realised that the opening contained 
+too much text and not enough visual content. I became concerned
+that players might lose focus or become distracted while reading 
+through long sections of dialogue with limited visual changes. 
+This made me reconsider the balance between text and artwork,
+and how both could work together to keep players engaged in the story.
+*/
+
+
 function startNewGame() {
     currentEventId = "1";
     isTeleporting = false;
     showScreen("story");
     renderStoryLine();
 }
+
 
 function renderStoryLine() {
     const event = getEventById(currentEventId);
@@ -425,6 +485,22 @@ function renderStoryLine() {
     }
 }
 
+
+/*
+I chose Click because it suits the pace of a visual novel.Players 
+can decide when to continue reading, and clicking an object can reveal 
+additional information about the scene.
+
+For a horror game, this slower pace can also create suspense.Players 
+have time to look at the environment and think about what they have 
+discovered. The interaction itself is simple, but the combination of 
+text, artwork and feedback gives each click a purpose.
+
+I tried to avoid adding controls just to make the prototype seem more 
+complicated. Instead, I focused on making the existing interactions 
+connect clearly to the story.
+*/
+
 function advanceStory() {
     if (currentScreen !== "story") return;
     
@@ -436,6 +512,9 @@ function advanceStory() {
         }
         return;
     }
+
+
+
 
 
     const event = getEventById(currentEventId);
@@ -1417,6 +1496,27 @@ function showExplorationChoices(options) {
     });
 }
 
+
+/*
+One of the most difficult parts of this project was understanding 
+how art, interaction and code connect to each other. At first, I 
+found it hard to see how these three parts could work together as 
+one experience.
+
+I explored some Stardew Valley mods to get a general idea of how visual 
+assets, interactions and code relate to each other. I did not copy 
+their code. Instead, looking at how these elements could work together 
+gave me a starting point for thinking about my own project. I also 
+used AI explanations to help me understand unfamiliar code.
+
+This helped me gradually understand how code can control when an image 
+appears, where a character is positioned and what happens when a 
+player clicks an object. I began to see programming, artwork and 
+interaction not as three separate tasks, but as connected parts of the 
+same experience.
+*/
+
+
 if (explorationScreen) {
     explorationScreen.addEventListener("click", (event) => {
         if (currentScreen !== "exploration") return;
@@ -2282,3 +2382,31 @@ Object.keys(explorationCondEn).forEach(key => {
     });
 });
 showScreen("title");
+
+
+/*
+I feel a little disappointed that I could not finish the entire story 
+within the available time. I originally planned to develop the fourth 
+floor, where Lingbo and Character 02 would encounter the boss and 
+uncover the truth about Haita. I had even finished a design sketch 
+for the boss, but I did not have enough time to implement this part 
+of the game：（
+
+I am also attached to Character 02, and I feel that the current 
+version does not give this character enough story or development. 
+I will probably continue writing Haita's story in my spare time, 
+even after the assessment is finished.
+
+If I continue developing the game, I would like to add a save system 
+and make better use of sound effects. I feel that the current version 
+does not fully use sound to build atmosphere, and it could benefit 
+from more impactful CG illustrations at key moments.
+
+At the same time, creating this prototype has already required a 
+significant amount of time and effort. I found the workload 
+challenging, and the limited time meant that I had to leave some of 
+my original ideas unfinished. Although I regret not being able to 
+realise everything I imagined, this project has helped me understand 
+how much work goes into bringing a story-driven game to life.
+*/
+
